@@ -49,9 +49,8 @@ classDiagram
         +main(String[] args)
     }
 
-    %% Relationships (following the same style as your reference)
+    %% Relationships (same style as your reference)
     LibraryResource <|.. Book : implements
     LibraryResource <|.. Journal : implements
     Student ..> LibraryResource : depends on
     TestProgram --> Student : uses
-    end note
