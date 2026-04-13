@@ -9,9 +9,6 @@ The original `Student` class had methods like `borrowBook()` and `borrowJournal(
 - Concrete classes (`Book`, `Journal`) implement the interface.
 - New resource types can be added **without changing any existing code**.
 
-This follows the **exact structure** of https://github.com/JerryEsperanza/dependency:
-- Interface + Concrete implementations + High-level class depending on abstraction.
-
 ## UML Class Diagram
 
 ```mermaid
