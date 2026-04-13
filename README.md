@@ -45,13 +45,13 @@ classDiagram
         +void borrowResource(LibraryResource resource)
     }
 
-    %% Relationships
-    Book --|> LibraryResource : implements
-    Journal --|> LibraryResource : implements
-    Student ..> LibraryResource : depends on
+    class TestProgram {
+        +main(String[] args)
+    }
 
-    note right of LibraryResource
-        New resource types (AudioBook, Thesis, 
-        EJournal, etc.) can be added easily 
-        by implementing this interface.
+    %% Relationships (following the same style as your reference)
+    LibraryResource <|.. Book : implements
+    LibraryResource <|.. Journal : implements
+    Student ..> LibraryResource : depends on
+    TestProgram --> Student : uses
     end note
