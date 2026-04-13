@@ -13,22 +13,45 @@ This follows the **exact structure** of https://github.com/JerryEsperanza/depend
 - Interface + Concrete implementations + High-level class depending on abstraction.
 
 ## UML Class Diagram
-```plantuml
-@startuml
-interface LibraryResource {
-  + boolean borrow()
-  + String getTitle()
-}
 
-class Book implements LibraryResource
-class Journal implements LibraryResource
+```mermaid
+classDiagram
+    class LibraryResource {
+        <<interface>>
+        +boolean borrow()
+        +String getTitle()
+    }
 
-class Student {
-  - name: String
-  + borrowResource(LibraryResource resource)
-}
+    class Book {
+        -String title
+        -boolean available
+        +Book(String title)
+        +boolean borrow()
+        +String getTitle()
+    }
 
-Student ..> LibraryResource : depends on
-Book --|> LibraryResource
-Journal --|> LibraryResource
-@enduml
+    class Journal {
+        -String title
+        -boolean available
+        +Journal(String title)
+        +boolean borrow()
+        +String getTitle()
+    }
+
+    class Student {
+        -String name
+        +Student(String name)
+        +String getName()
+        +void borrowResource(LibraryResource resource)
+    }
+
+    %% Relationships
+    Book --|> LibraryResource : implements
+    Journal --|> LibraryResource : implements
+    Student ..> LibraryResource : depends on
+
+    note right of LibraryResource
+        New resource types (AudioBook, Thesis, 
+        EJournal, etc.) can be added easily 
+        by implementing this interface.
+    end note
